@@ -1,7 +1,7 @@
 
 print("========================= \nGitHub Repository Analyzer\n=========================")
-
-# get the repository url from  the client 
+ 
+ from github_api import fetch_repository_data
 
 def validate_url(url):
     return url.startswith("https://github.com/")
@@ -18,6 +18,10 @@ def extract_owner_repo(url):
     repo = parts[4]
     return owner , repo
 
+def build_api_url(owner, repo):
+    return f"https://api.github.com/{owner}/{repo}"
+   
+# --- main flow ---
 
 url = input("ENTER URL: ")
 
@@ -26,7 +30,21 @@ if not validate_url(url):
     exit()
 
 owner , repo = extract_owner_repo(url)
-print(f"owner: {owner} and repo: {repo}")
+
+api_url = build_api_url(owner , repo)
+
+data = fetch_repository_data(api_url)
+
+if data:
+    if data:
+    print("\nRepository Info")
+    print("----------------")
+    print("Name:", data["name"])
+    print("Stars:", data["stargazers_count"])
+    print("Forks:", data["forks_count"])
+    print("Language:", data["language"])
+else:
+    print("Failed to fetch repository data.")
 
 
 
