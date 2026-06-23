@@ -8,9 +8,9 @@ def validate_url(url):
       
 
 def normalize_url(url):
-     if url.endswith("/"):
+    if url.endswith("/"):
         return url[:-1]
-     return url
+    return url
 
 def extract_owner_repo(url):
     parts = url.split("/")
