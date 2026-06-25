@@ -1,7 +1,7 @@
 
 print("========================= \nGitHub Repository Analyzer\n=========================")
  
- from github_api import fetch_repository_data
+from github_api import fetch_repository_data
 
 def validate_url(url):
     return url.startswith("https://github.com/")
@@ -36,13 +36,7 @@ api_url = build_api_url(owner , repo)
 data = fetch_repository_data(api_url)
 
 if data:
-    if data:
-    print("\nRepository Info")
-    print("----------------")
-    print("Name:", data["name"])
-    print("Stars:", data["stargazers_count"])
-    print("Forks:", data["forks_count"])
-    print("Language:", data["language"])
+    show_repository_report(data)
 else:
     print("Failed to fetch repository data.")
 
