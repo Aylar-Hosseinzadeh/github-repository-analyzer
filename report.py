@@ -24,6 +24,17 @@ def show_repository_report(data):
     print(f"license : {license_name}")
 
 
+def show_contributors_report(contributors_data):
+    for contributor in contributors_data:
+        login = contributor["login"]
+        contributions = contributor["contributions"]
+        print(f"{login} ({contributions} contributions)")
+
+
+
+
+
+
     
 
 
